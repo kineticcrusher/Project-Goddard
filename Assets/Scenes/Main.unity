@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 15
   initialVelocity: {x: 0, y: 0, z: 0}
+  isAffected: 1
   isAffector: 0
 --- !u!135 &178462904
 SphereCollider:
@@ -293,7 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 1000
   initialVelocity: {x: 0, y: 0, z: 0}
-  isAffector: 0
+  isAffected: 1
+  isAffector: 1
 --- !u!135 &908904903
 SphereCollider:
   m_ObjectHideFlags: 0
