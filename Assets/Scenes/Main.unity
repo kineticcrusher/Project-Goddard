@@ -1398,7 +1398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492089318}
-  - component: {fileID: 1492089317}
+  - component: {fileID: 1492089319}
   m_Layer: 0
   m_Name: Universe
   m_TagString: Untagged
@@ -1406,18 +1406,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1492089317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492089316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d96ced6fb2a21047bd19a0ea6f1f2f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1492089318
 Transform:
   m_ObjectHideFlags: 0
@@ -1430,9 +1418,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 178462902}
-  - {fileID: 908904901}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1724597076
@@ -1601,6 +1587,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1492089319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492089316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282810e95d0b8664f93c753ddcc67618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetMaterial: {fileID: 2100000, guid: ec733ae53d790e04cabbe5e47c20b84c, type: 2}
+  planetRadius: 1
+  planetFaceResolution: 5
 --- !u!1 &2144157100
 GameObject:
   m_ObjectHideFlags: 0

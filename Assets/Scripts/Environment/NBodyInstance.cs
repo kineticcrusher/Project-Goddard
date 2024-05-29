@@ -15,9 +15,9 @@ public class NBodyInstance : MonoBehaviour {
         if (isAffected)
             foreach (NBodyInstance affector in otherNBodies)
                 if (affector != this && affector.isAffector) {
-                    float distance = Vector3.Distance(transform.position, affector.transform.position);
+                    float distance = (affector.transform.position - transform.position).sqrMagnitude;
                     Vector3 direction = (affector.transform.position - transform.position).normalized;
-                    double force = gravitationalConstant * ((mass * affector.mass) / (distance * distance));
+                    double force = gravitationalConstant * ((mass * affector.mass) / distance);
 
                     velocity += direction * ((float)force / mass);
                 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class NBodyManager : MonoBehaviour {
-    public const double gravitationalConstant = 0.001f; //real world value is 0.00000000006674;
+    public const double gravitationalConstant = 0.001f; // real world value is 0.00000000006674
     NBodyInstance[] nBodies;
 
     void Awake() {
