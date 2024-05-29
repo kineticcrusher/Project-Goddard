@@ -285,7 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282810e95d0b8664f93c753ddcc67618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: ec733ae53d790e04cabbe5e47c20b84c, type: 2}
+  planetMaterial: {fileID: 2100000, guid: ec733ae53d790e04cabbe5e47c20b84c, type: 2}
+  planetRadius: 1
+  planetFaceResolution: 5
 --- !u!1 &2144157100
 GameObject:
   m_ObjectHideFlags: 0
