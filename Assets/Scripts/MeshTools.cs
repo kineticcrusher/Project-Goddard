@@ -1,38 +1,48 @@
 using UnityEngine;
 
-public static class MeshTools {
-    public static (Vector3[], int[]) GeneratePlaneMesh(int dimensions, int resolution) {
-        int lod = dimensions * resolution;
-        Vector3[] verts = new Vector3[lod * lod];
-        int[] tris = new int[lod * lod * 6];
+// quick and easy storage for all the stuff unity meshes use :)
+public struct MeshInfo {
+    public Vector3[] verts; public int[] tris; public Vector2[] uv;
 
-        // create all the vertices at the correct amount of detail
-        for (int i = 0, x = 0; x < lod; ++x) {
-            for (int z = 0; z < lod; ++z) {
-                verts[i] = new((float)x / resolution, 0, (float)z / resolution);
+    public MeshInfo (Vector3[] verts, int[] tris, Vector2[] uv) {
+        this.verts = verts; this.tris = tris; this.uv = uv;
+    }
+}
+
+public static class MeshTools {
+    public static MeshInfo GeneratePlaneMesh(int resolution, Vector3 normal) {
+        Vector3[] verts = new Vector3[(resolution + 1) * (resolution + 1)];
+        Vector2[] uv = new Vector2[verts.Length];
+
+        for (int i = 0, x = 0; x <= resolution; ++x) {
+            for (int z = 0; z <= resolution; ++z) {
+                float xFractionOfUnit = (1f / resolution) * x;
+                float zFractionOfUnit = (1f / resolution) * z;
+                verts[i] = new(xFractionOfUnit, 0, zFractionOfUnit);
+                uv[i] = new(xFractionOfUnit, zFractionOfUnit);
                 ++i;
             }
         }
 
-        // generate trianges between sets of three verts with wrapping from row to row and column to column
-        short vertOffset = 0;
-        short triOffset = 0;
-        for (int x = 0; x < lod - 1; ++x) {
-            for (int z = 0; z < lod - 1; ++z) {
-                tris[triOffset] = vertOffset; 
-                tris[triOffset + 1] = vertOffset + 1;
-                tris[triOffset + 2] = vertOffset + lod;
-                tris[triOffset + 3] = vertOffset + 1; 
-                tris[triOffset + 4] = vertOffset + lod + 1;
-                tris[triOffset + 5] = vertOffset + lod;
+        int[] tris = new int[resolution * resolution * 6];
+        short trianglesOffset = 0;
+        short vertexOffset = 0;
+        for (int x = 0; x < resolution; ++x) {
+            for (int z = 0; z < resolution; ++z) {
+                tris[trianglesOffset] = vertexOffset;
+                tris[trianglesOffset + 1] = vertexOffset + 1;
+                tris[trianglesOffset + 2] = vertexOffset + resolution + 1;
+                tris[trianglesOffset + 3] = vertexOffset + resolution + 1;
+                tris[trianglesOffset + 4] = vertexOffset + 1;
+                tris[trianglesOffset + 5] = vertexOffset + resolution + 2;
 
-                ++vertOffset;
-                triOffset += 6;
+                ++vertexOffset;
+                trianglesOffset += 6;
             }
 
-            ++vertOffset;
+            ++vertexOffset;
         }
-        
-        return (verts, tris);
+
+        return new MeshInfo(verts, tris, uv);
     }
 }
