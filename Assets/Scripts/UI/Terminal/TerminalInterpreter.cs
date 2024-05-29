@@ -13,7 +13,7 @@ public class TerminalInterpreter : MonoBehaviour
 
     private void Awake()
     {
-        controllable = currentControllableObject.GetComponent<IControllable>();
+        if (currentControllableObject) controllable = currentControllableObject.GetComponent<IControllable>();
     }
 
     public List<string> Interpret(string input)
