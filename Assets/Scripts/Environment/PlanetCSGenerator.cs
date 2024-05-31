@@ -36,8 +36,8 @@ public class PlanetCSGenerator : MonoBehaviour {
     MeshInfo GeneratePlaneObject(int resolution, Vector3 normal) {
         MeshInfo data = MeshTools.GeneratePlaneMesh(resolution, normal);
         for (int i = 0; i < data.verts.Length; ++i) {
-            if (!useEvenVertDistribution) data.verts[i] = MeshTools.CubePointToSphere(data.verts[i]);
-            else data.verts[i] = MeshTools.CubePointToSphereEvenDist(data.verts[i]);
+            if (!useEvenVertDistribution) data.verts[i] = MeshTools.CubePointToSphere(data.verts[i]) * planetRadius;
+            else data.verts[i] = MeshTools.CubePointToSphereEvenDist(data.verts[i]) * planetRadius;
         }
 
         GameObject planeObject = new("Planet Face"); planeObject.transform.parent = transform;
