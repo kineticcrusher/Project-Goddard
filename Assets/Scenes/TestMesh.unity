@@ -288,11 +288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minResolution: 1
-  maxResolution: 3
+  maxResolution: 7
   mainCamera: {fileID: 2090335228}
-  cubeDistance: 100
-  maxSubdivisionDistance: 50
-  planetRadius: 20
+  cubeDistance: 200
+  maxSubdivisionDistance: 300
+  planetRadius: 100
+  updateInterval: 1
 --- !u!23 &1272774000
 MeshRenderer:
   m_ObjectHideFlags: 0
